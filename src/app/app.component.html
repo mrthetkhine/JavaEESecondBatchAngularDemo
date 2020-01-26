@@ -328,8 +328,8 @@
 
 <div class="content" role="main">
 Hello from Angular
-  <app-movie
-    [movie]="movieData">
+  <app-movie *ngFor="let movie of movies"
+    [movie]="movie">
 
   </app-movie>
 </div>

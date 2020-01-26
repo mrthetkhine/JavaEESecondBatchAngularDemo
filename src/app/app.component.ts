@@ -9,5 +9,5 @@ import {Movie} from "./models/movie.model";
 export class AppComponent {
   title = 'seconddemo';
 
-  movieData: Movie = new Movie('Avatar',2020);
+  movies: Array<Movie> = [new Movie('Avatar',2020), new Movie('Titanic',1990)];
 }
