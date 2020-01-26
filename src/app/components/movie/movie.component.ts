@@ -10,6 +10,8 @@ export class MovieComponent implements OnInit {
   name : string = 'Avatar';
   year : number = 2020;
   actors : Array<string> = ['Actor One ','Actor Two ','Actor Three'];
+
+  liked : boolean = true;
   constructor() { }
 
   ngOnInit() {
