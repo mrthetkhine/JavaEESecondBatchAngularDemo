@@ -17,4 +17,8 @@ export class MovieComponent implements OnInit {
   ngOnInit() {
   }
 
+  changeLike()
+  {
+    this.liked = ! this.liked;
+  }
 }

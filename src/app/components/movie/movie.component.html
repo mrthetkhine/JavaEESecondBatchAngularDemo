@@ -7,6 +7,9 @@
       {{actor}}
     </li>
   </ol>
-  <div *ngIf="liked">Liked</div>
-  <span *ngIf="!liked">UnLiked</span>
+
+  <button (click)="changeLike()">
+    <div *ngIf="liked">Unlike Me</div>
+    <span *ngIf="!liked">Like Me</span>
+  </button>
 </div>
