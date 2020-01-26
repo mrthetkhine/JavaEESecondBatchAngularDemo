@@ -2,4 +2,9 @@
   Movie Component
    <div> Name {{name}}</div>
   <div> Year {{year}}</div>
+  <ol>
+    <li *ngFor="let actor of actors">
+      {{actor}}
+    </li>
+  </ol>
 </div>
