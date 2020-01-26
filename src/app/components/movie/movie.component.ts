@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Movie} from "../../models/movie.model";
 
 @Component({
   selector: 'app-movie',
@@ -7,11 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieComponent implements OnInit {
 
-  name : string = 'Avatar';
-  year : number = 2020;
-  actors : Array<string> = ['Actor One ','Actor Two ','Actor Three'];
+  movie : Movie = new Movie('Avatar',2020);
 
-  liked : boolean = true;
+  actors : Array<string> = ['Actor One ','Actor Two ','Actor Three'];
   constructor() { }
 
   ngOnInit() {
@@ -19,6 +18,6 @@ export class MovieComponent implements OnInit {
 
   changeLike()
   {
-    this.liked = ! this.liked;
+    this.movie.liked = ! this.movie.liked;
   }
 }
