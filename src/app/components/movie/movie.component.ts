@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import {Movie} from "../../models/movie.model";
 
 @Component({
@@ -8,7 +8,7 @@ import {Movie} from "../../models/movie.model";
 })
 export class MovieComponent implements OnInit {
 
-  movie : Movie = new Movie('Avatar',2020);
+  @Input() movie:Movie ;
 
   actors : Array<string> = ['Actor One ','Actor Two ','Actor Three'];
   constructor() { }
