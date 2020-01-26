@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import {Movie} from "../../models/movie.model";
 
 @Component({
@@ -9,6 +9,7 @@ import {Movie} from "../../models/movie.model";
 export class MovieComponent implements OnInit {
 
   @Input() movie:Movie ;
+  @Output() likeChanged = new EventEmitter<Movie>();
 
   actors : Array<string> = ['Actor One ','Actor Two ','Actor Three'];
   constructor() { }
@@ -19,5 +20,6 @@ export class MovieComponent implements OnInit {
   changeLike()
   {
     this.movie.liked = ! this.movie.liked;
+    this.likeChanged.emit(this.movie);
   }
 }

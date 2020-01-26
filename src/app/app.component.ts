@@ -10,4 +10,9 @@ export class AppComponent {
   title = 'seconddemo';
 
   movies: Array<Movie> = [new Movie('Avatar',2020), new Movie('Titanic',1990)];
+
+  likeChangedCallBack(movie:Movie)
+  {
+    console.log('Like Changed ',movie);
+  }
 }

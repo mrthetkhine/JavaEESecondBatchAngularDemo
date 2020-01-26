@@ -329,7 +329,8 @@
 <div class="content" role="main">
 Hello from Angular
   <app-movie *ngFor="let movie of movies"
-    [movie]="movie">
+    [movie]="movie"
+    (likeChanged)="likeChangedCallBack(movie)">
 
   </app-movie>
 </div>
