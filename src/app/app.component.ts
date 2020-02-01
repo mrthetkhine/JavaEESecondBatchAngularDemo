@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Movie} from "./models/movie.model";
 import {MovieService} from "./services/movie.service";
+import {Observable} from "rxjs/index";
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,16 @@ import {MovieService} from "./services/movie.service";
 export class AppComponent {
   title = 'seconddemo';
   movies: Array<Movie> ;
+
+  moviesData : Observable<Movie[]>;
   constructor(private movieService : MovieService)
   {
 
   }
   ngOnInit()
   {
-    this.movies = this.movieService.getAllMovies();
+    this.moviesData = this.movieService.getAllMovies();
+    console.log(this.moviesData);
   }
 
 

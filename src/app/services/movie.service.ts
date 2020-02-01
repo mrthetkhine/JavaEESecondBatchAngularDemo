@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import {URL_HOST} from '../utils/Setting';
 import {Movie} from "../models/movie.model";
 
 @Injectable({
@@ -10,10 +13,11 @@ export class MovieService {
             new Movie('Titanic',1990),
             new Movie('Forrest Gump',1990)];
 
-  constructor() { }
+  constructor(private httpClient : HttpClient) { }
+
 
   getAllMovies()
   {
-    return this.movies;
+    return this.httpClient.get<Movie[]>(URL_HOST+"/movies");
   }
 }
