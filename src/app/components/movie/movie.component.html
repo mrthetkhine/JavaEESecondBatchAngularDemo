@@ -1,15 +1,23 @@
 <div class="border">
-  Movie Component
-   <div> Name {{movie.title}}</div>
-  <div> Year {{movie.year}}</div>
-  <ol>
-    <li *ngFor="let actor of actors">
-      {{actor}}
-    </li>
-  </ol>
+  <div class="card" >
 
-  <button (click)="changeLike()">
-    <div *ngIf="movie.liked">Unlike Me</div>
-    <span *ngIf="!movie.liked">Like Me</span>
-  </button>
+    <div class="card-body">
+      <h5 class="card-title"> {{movie.title}}</h5>
+      <p class="card-text">Year {{movie.year}}</p>
+
+      <ol>
+        <li *ngFor="let actor of actors">
+          {{actor}}
+        </li>
+      </ol>
+      <button class="btn btn-primary" (click)="changeLike()">
+        <div *ngIf="movie.liked">Unlike Me</div>
+        <span *ngIf="!movie.liked">Like Me</span>
+      </button>
+    </div>
+  </div>
+
+
+
+
 </div>
