@@ -1,5 +1,7 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
 .border
 {
   border:1px solid lightgray;
   padding:20px;
+  margin:10px;
 }
