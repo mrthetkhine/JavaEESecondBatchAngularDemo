@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Movie} from "./models/movie.model";
+import {MovieService} from "./services/movie.service";
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,16 @@ import {Movie} from "./models/movie.model";
 })
 export class AppComponent {
   title = 'seconddemo';
+  movies: Array<Movie> ;
+  constructor(private movieService : MovieService)
+  {
 
-  movies: Array<Movie> = [new Movie('Avatar',2020), new Movie('Titanic',1990)];
+  }
+  ngOnInit()
+  {
+    this.movies = this.movieService.getAllMovies();
+  }
+
 
   likeChangedCallBack(movie:Movie)
   {

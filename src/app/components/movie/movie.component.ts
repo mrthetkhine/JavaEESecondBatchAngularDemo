@@ -34,6 +34,6 @@ export class MovieComponent implements OnInit {
     this.movie.liked = ! this.movie.liked;
     this.likeChanged.emit(this.movie);
 
-    this.loggerService.log("Movie liked ",this.movie)
+    this.loggerService.log("Movie liked ")
   }
 }
