@@ -12,17 +12,25 @@ export class AppComponent {
   title = 'seconddemo';
   movies: Array<Movie> ;
 
-  moviesData : Observable<Movie[]>;
+  $moviesData : Observable<Movie[]>;
+  $movieSubscriber;
   constructor(private movieService : MovieService)
   {
 
   }
   ngOnInit()
   {
-    this.moviesData = this.movieService.getAllMovies();
-    console.log(this.moviesData);
-  }
+    this.$moviesData = this.movieService.getAllMovies();
 
+    this.$movieSubscriber = this.movieService.getAllMovies().subscribe(data=> {
+      console.log('Subscribe data ',data);
+    });
+    console.log(this.$moviesData);
+  }
+  ngDestroy()
+  {
+    this.$movieSubscriber.unsubscribe();
+  }
 
   likeChangedCallBack(movie:Movie)
   {
