@@ -20,7 +20,15 @@ export class MovieService {
   {
     this.httpClient.get<Movie[]>(URL_HOST+"/movies").subscribe(data=>{
       this.movies = data;
-      this.movies$.next(data);
+      this.movies$.next(this.movies);
+    });
+  }
+  deleteMovie(movie:Movie)
+  {
+    this.httpClient.delete(URL_HOST+"/movies/"+movie.id).subscribe(data=>{
+      console.log('Delete movie response ',data);
+      this.movies = this.movies.filter(mov => mov.id != movie.id);
+      this.movies$.next(this.movies);
     });
   }
 }

@@ -1,4 +1,5 @@
 export class Movie {
+  id: number;
   name:string;
   year:number;
   liked?:boolean;

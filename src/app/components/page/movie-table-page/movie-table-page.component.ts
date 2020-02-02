@@ -24,6 +24,11 @@ export class MovieTablePageComponent implements OnInit {
     })
 
   }
+  delete(movie)
+  {
+    console.log('Delete movie ',movie);
+    this.movieService.deleteMovie(movie);
+  }
   ngDestroy()
   {
     console.log('Table page destroy');
