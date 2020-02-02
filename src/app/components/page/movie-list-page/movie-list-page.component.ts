@@ -10,7 +10,7 @@ import {Movie} from "../../../models/movie.model";
 })
 export class MovieListPageComponent implements OnInit {
 
-  $moviesData : Observable<Movie[]>;
+  $moviesData ;
   $movieSubscriber;
   constructor(private movieService : MovieService)
   {
@@ -18,12 +18,7 @@ export class MovieListPageComponent implements OnInit {
   }
   ngOnInit()
   {
-    this.$moviesData = this.movieService.getAllMovies();
-
-    this.$movieSubscriber = this.movieService.getAllMovies().subscribe(data=> {
-      console.log('Subscribe data ',data);
-    });
-    console.log(this.$moviesData);
+    this.$moviesData = this.movieService.movies$;
   }
   ngDestroy()
   {

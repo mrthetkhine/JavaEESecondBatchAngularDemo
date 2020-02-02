@@ -20,9 +20,9 @@ export class AppComponent {
   }
   ngOnInit()
   {
-    this.$moviesData = this.movieService.getAllMovies();
+    this.movieService.loadAllMovies();
 
-    this.$movieSubscriber = this.movieService.getAllMovies().subscribe(data=> {
+    this.$movieSubscriber = this.movieService.movies$.subscribe(data=> {
       console.log('Subscribe data ',data);
     });
     console.log(this.$moviesData);

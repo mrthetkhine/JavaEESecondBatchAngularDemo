@@ -10,7 +10,7 @@ import {Observable} from "rxjs/index";
 })
 export class MovieTablePageComponent implements OnInit {
 
-  $moviesData : Observable<Movie[]>;
+  $moviesData ;
   $movieSubscriber;
   constructor(private movieService : MovieService)
   {
@@ -18,12 +18,9 @@ export class MovieTablePageComponent implements OnInit {
   }
   ngOnInit()
   {
-    this.$moviesData = this.movieService.getAllMovies();
+    this.$moviesData = this.movieService.movies$;
 
-    this.$movieSubscriber = this.movieService.getAllMovies().subscribe(data=> {
-      console.log('Subscribe data ',data);
-    });
-    console.log(this.$moviesData);
+
   }
   ngDestroy()
   {
