@@ -15,19 +15,19 @@ export class MovieComponent implements OnInit {
   actors : Array<string> = ['Actor One ','Actor Two ','Actor Three'];
 
   constructor(private loggerService : LoggerService) {
-    console.log('Movie constructor')
+    //console.log('Movie constructor')
   }
 
   ngOnChanges()
   {
-    console.log('Run ngOnChanges');
+    //console.log('Run ngOnChanges');
   }
   ngOnInit() {
-    console.log('Run ngOnInit');
+    //console.log('Run ngOnInit');
   }
   ngOnDestroy()
   {
-    console.log('Run ngOnDestroy');
+    //console.log('Run ngOnDestroy');
   }
   changeLike()
   {

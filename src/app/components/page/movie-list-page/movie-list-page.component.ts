@@ -19,9 +19,13 @@ export class MovieListPageComponent implements OnInit {
   ngOnInit()
   {
     this.$moviesData = this.movieService.movies$;
+    this.$movieSubscriber = this.$moviesData.subscribe( data=>{
+      console.log('New movie data ',data);
+    });
   }
   ngDestroy()
   {
+    console.log('List page destroy');
     this.$movieSubscriber.unsubscribe();
   }
 

@@ -19,11 +19,14 @@ export class MovieTablePageComponent implements OnInit {
   ngOnInit()
   {
     this.$moviesData = this.movieService.movies$;
-
+    this.$movieSubscriber  = this.$moviesData.subscribe(data=>{
+      console.log('New movie data in table page ',data);
+    })
 
   }
   ngDestroy()
   {
+    console.log('Table page destroy');
     this.$movieSubscriber.unsubscribe();
   }
 }
