@@ -7,16 +7,29 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="row from-group-row">
+        <label class="col-sm-4 ">
+          Name
 
-      <label>
-        Name
-        <input type="text" formControlName="name">
-      </label>
+        </label>
+        <input class="col-sm-4 form-control" type="text" formControlName="name"
+               >
+        <div *ngIf="editForm.get('name').invalid && (editForm.get('name').dirty || editForm.get('name').touched)"
+             class="alert alert-danger">
+          <div *ngIf="this.editForm.get('name').errors">
+            EmployeeName is required.
+          </div>
+          </div>
+      </div>
 
-      <label>
-        Year
-        <input type="text" formControlName="year">
-      </label>
+      <div class="row from-group-row">
+        <label class="col-sm-4" >
+          Year
+
+        </label>
+        <input class="col-sm-4 form-control"type="text" formControlName="year">
+      </div>
+
       <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Update</button>
     </form>
   </div>
