@@ -1,3 +1,17 @@
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Boostrap Modal Dialog Body
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -11,6 +25,9 @@
         >
       <td>{{movie.name}}</td>
       <td>{{movie.year}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="editMovie(movie)">Edit</button>
+      </td>
       <td>
         <button class="btn btn-primary" (click)="delete(movie)">Delete</button>
       </td>
