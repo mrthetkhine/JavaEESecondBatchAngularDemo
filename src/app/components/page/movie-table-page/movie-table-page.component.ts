@@ -1,4 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 
 import {MovieService} from "../../../services/movie.service";
@@ -18,6 +20,12 @@ export class MovieTablePageComponent implements OnInit {
   @ViewChild('mymodal',{ static: false }) editModalDlg:any;
   closeResult: string;
   modalOptions:NgbModalOptions;
+
+  editForm = new FormGroup({
+    name: new FormControl(''),
+    year: new FormControl(''),
+  });
+
   constructor(private modalService: NgbModal,
               private movieService : MovieService)
   {
@@ -55,6 +63,10 @@ export class MovieTablePageComponent implements OnInit {
     console.log('Edit movie ',movie);
     this.open(this.editModalDlg);
 
+  }
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.editForm.value);
   }
   delete(movie)
   {
