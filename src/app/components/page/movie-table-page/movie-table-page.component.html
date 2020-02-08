@@ -17,7 +17,7 @@
         Year
         <input type="text" formControlName="year">
       </label>
-      <button type="submit" class="btn btn-primary">Update</button>
+      <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Update</button>
     </form>
   </div>
   <div class="modal-footer">

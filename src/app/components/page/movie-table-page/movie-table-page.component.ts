@@ -1,5 +1,6 @@
+///<reference path="../../../../../node_modules/@angular/forms/forms.d.ts"/>
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,12 +22,10 @@ export class MovieTablePageComponent implements OnInit {
   closeResult: string;
   modalOptions:NgbModalOptions;
 
-  editForm = new FormGroup({
-    name: new FormControl(''),
-    year: new FormControl(''),
-  });
+  editForm:FormGroup ;
 
   constructor(private modalService: NgbModal,
+              private formBuilder: FormBuilder,
               private movieService : MovieService)
   {
 
@@ -37,6 +36,10 @@ export class MovieTablePageComponent implements OnInit {
     this.$movieSubscriber  = this.$moviesData.subscribe(data=>{
       console.log('New movie data in table page ',data);
     })
+    this.editForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      year: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+    });
 
   }
   open(content) {
