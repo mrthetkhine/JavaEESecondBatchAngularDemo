@@ -14,11 +14,11 @@
         </label>
         <input class="col-sm-4 form-control" type="text" formControlName="name"
                >
-        <div *ngIf="editForm.get('name').invalid && (editForm.get('name').dirty || editForm.get('name').touched)"
+        <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
              class="alert alert-danger">
-          <div *ngIf="this.editForm.get('name').errors">
-            EmployeeName is required.
-          </div>
+            <div *ngIf="f.name.errors">
+              EmployeeName is required.
+            </div>
           </div>
       </div>
 
@@ -28,6 +28,12 @@
 
         </label>
         <input class="col-sm-4 form-control"type="text" formControlName="year">
+        <div *ngIf="f.year.invalid && (f.year.dirty || f.year.touched)"
+             class="alert alert-danger">
+          <div *ngIf="f.year.errors">
+            Year is required.
+          </div>
+        </div>
       </div>
 
       <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Update</button>

@@ -37,6 +37,7 @@ export class MovieTablePageComponent implements OnInit {
       console.log('New movie data in table page ',data);
     })
     this.editForm = this.formBuilder.group({
+      id : [''],
       name: ['', Validators.required],
       year: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
     });
@@ -61,15 +62,22 @@ export class MovieTablePageComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
+  get f()
+  {
+    return this.editForm.controls;
+  }
   editMovie(movie)
   {
     console.log('Edit movie ',movie);
+    let model = {... movie};
+    this.editForm.patchValue(model);
     this.open(this.editModalDlg);
 
   }
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.editForm.value);
+    var model = this.editForm.value;
+    console.log('Update ',model);
   }
   delete(movie)
   {
