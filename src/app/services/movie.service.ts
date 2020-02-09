@@ -23,6 +23,14 @@ export class MovieService {
       this.movies$.next(this.movies);
     });
   }
+  createMovie(movie:Movie)
+  {
+    this.httpClient.post<Movie>(URL_HOST+"/movies/",movie).subscribe(data=>{
+      console.log('Create movie response ',data);
+      this.movies.push(data);
+      this.movies$.next(this.movies);
+    });
+  }
   updateMovie(movie:Movie)
   {
     this.httpClient.put<Movie>(URL_HOST+"/movies/"+movie.id,movie).subscribe(data=>{

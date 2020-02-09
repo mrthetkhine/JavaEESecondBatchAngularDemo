@@ -66,6 +66,11 @@ export class MovieTablePageComponent implements OnInit {
   {
     return this.editForm.controls;
   }
+  newMovie()
+  {
+    this.editForm.reset();
+    this.open(this.editModalDlg);
+  }
   editMovie(movie)
   {
     console.log('Edit movie ',movie);
@@ -78,9 +83,19 @@ export class MovieTablePageComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     var model = this.editForm.value;
     console.log('Update ',model);
-    this.movieService.updateMovie(model);
+    if( model.id ) //Update existing model
+    {
+      this.movieService.updateMovie(model);
+    }
+    else
+    {
+      //New model create
+      console.log('New model ', model);
+      this.movieService.createMovie(model);
+    }
     this.editForm.reset();
     this.modalService.dismissAll();
+
   }
   delete(movie)
   {
