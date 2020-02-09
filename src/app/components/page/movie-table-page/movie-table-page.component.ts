@@ -78,6 +78,9 @@ export class MovieTablePageComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     var model = this.editForm.value;
     console.log('Update ',model);
+    this.movieService.updateMovie(model);
+    this.editForm.reset();
+    this.modalService.dismissAll();
   }
   delete(movie)
   {

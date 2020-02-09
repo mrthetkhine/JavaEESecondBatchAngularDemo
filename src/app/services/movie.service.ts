@@ -23,6 +23,14 @@ export class MovieService {
       this.movies$.next(this.movies);
     });
   }
+  updateMovie(movie:Movie)
+  {
+    this.httpClient.put<Movie>(URL_HOST+"/movies/"+movie.id,movie).subscribe(data=>{
+      console.log('Update movie response ',data);
+      this.movies = this.movies.map(mov => mov.id != movie.id? mov : data);
+      this.movies$.next(this.movies);
+    });
+  }
   deleteMovie(movie:Movie)
   {
     this.httpClient.delete(URL_HOST+"/movies/"+movie.id).subscribe(data=>{
