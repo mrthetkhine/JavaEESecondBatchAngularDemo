@@ -22,7 +22,10 @@ export class MovieTablePageComponent implements OnInit {
   closeResult: string;
   modalOptions:NgbModalOptions;
 
-  editForm:FormGroup ;
+  editForm:FormGroup
+
+  modalDialogLabel : string = '';
+  modalButtonLabel : string = '';
 
   constructor(private modalService: NgbModal,
               private formBuilder: FormBuilder,
@@ -68,11 +71,15 @@ export class MovieTablePageComponent implements OnInit {
   }
   newMovie()
   {
+    this.modalDialogLabel = 'New';
+    this.modalButtonLabel = 'Save';
     this.editForm.reset();
     this.open(this.editModalDlg);
   }
   editMovie(movie)
   {
+    this.modalDialogLabel = 'Edit';
+    this.modalButtonLabel = 'Update';
     console.log('Edit movie ',movie);
     let model = {... movie};
     this.editForm.patchValue(model);
